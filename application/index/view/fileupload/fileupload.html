@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0044)http://www.sucaihuo.com/jquery/15/1569/demo/ -->
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>图片上传</title>
+    <link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap-theme.css">
+    <link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap-theme.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/static/user-css/css/ThinkPHP登录页.css">
+    <link type="text/css" rel="stylesheet" href="/static/select-box/css/dateTime.css">
+    <!-- Main style sheet -->
+    <style type="text/css">
+
+        .message{width:320px;margin:240px auto 0px auto;line-height:24px;color:#ffd5bc;overflow:hidden}
+        .message .input{width:220px;height:28px;line-height:28px;border:none;background:#333333;padding-left:20px;color:#ffffff;font-family:Microsoft YaHei;}
+        .message .liulan{width:80px; text-align: center;margin-left: 5%;height:26px;border:1px solid #ffb660;background:#fe9e19;color:#ffffff;cursor:pointer;}
+        .message .files{position:absolute;left:-1000px;top:52px;heigth:26px; cursor:pointer;filter: Alpha(opacity=0);-moz-opacity:0;opacity:0;}
+        .message .confirm{width: 220px;  margin-top: 5%;height: 26px; text-align: center;border: none;background: #fe9e19;color: #ffffff;cursor: pointer;}
+        .message .input2{margin-top: 5% ;color: #000000;width: 220px}
+        .message #bbb{resize: none;}
+        .type{ display: none;}
+
+    </style>
+</head>
+<body>
+<div id="toptage" style="position: fixed;top: 0px">
+    <div class="row" style="margin-top: 2%;">
+        <div class="col-md-3"><img src="/static/user-css/img/GOGlogo.png" style="width: 100%;height: 100%;margin-top: -50%;"></div>
+        <div class="col-md-1"></div>
+
+
+        <div class="col-md-1"><h3 class="h4"><a href="{:url('Paginate/tomain')}">旅图首页</a></h3></div>
+        <div class="col-md-1"><h3 class="h4"><a href="">客户端下载</a></h3></div>
+        <div class="col-md-1"><h3 class="h4"><a href="">加入社群</a></h3></div>
+        <div class="col-md-1"><h3 class="h4"><a href="" onClick="return confirm('您当前无权访问');">管理员进入</a></h3></div>
+        <div class="col-md-1"><h3 class="h4"><a href="{:url('index/offline')}">退出账号</a></h3></div>
+    </div>
+</div>
+
+<div class="message">
+<form action="{:url('Imgupload/toImgUpload')}" enctype="multipart/form-data" method="post" style="margin-top: 15%">
+    <input type="text" id="txt" name="txt" class="input" value="image-path" disabled="disabled"/>
+    <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="传图" size="30" onClick="f.click()" class="liulan" />
+    <input type="file"   id="f" onChange="txt.value=this.value" name="test" style="height:26px;"  class="files"  hidefocus/>
+
+    <ul style="list-style-type: none;padding-top: 50px;height:360px;">
+
+        <li><input type="text" placeholder="请选择日期" name="imagedate" id="date" autocomplete="off"></li>
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="建筑"/>
+            <input type="button" name="building" class="btn btn-primary" value="建筑" onclick="chooseType(this)">
+        </li>
+
+        <!-- Indicates a successful or positive action -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="时尚"/>
+            <input type="button" name="fashion" class="btn btn-success" value="时尚" onclick="chooseType(this)">
+        </li>
+
+        <!-- Contextual button for informational alert messages -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="风景"/>
+            <input type="button" name="scenery" class="btn btn-info" value="风景" onclick="chooseType(this)">
+        </li>
+
+        <!-- Indicates caution should be taken with this action -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="周刊"/>
+            <input type="button" name="weekly" class="btn btn-danger" value="周刊" onclick="chooseType(this)">
+        </li>
+
+        <!-- Indicates a dangerous or potentially negative action -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="人像"/>
+            <input type="button" name="portrait" class="btn btn-primary" value="人像" onclick="chooseType(this)">
+        </li>
+
+            <!-- Indicates a successful or positive action -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="艺术"/>
+            <input type="button" name="art" class="btn btn-success" value="艺术" onclick="chooseType(this)">
+        </li>
+
+            <!-- Contextual button for informational alert messages -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="旅行"/>
+            <input type="button" name="journey" class="btn btn-info" value="旅行" onclick="chooseType(this)">
+        </li>
+
+            <!-- Indicates caution should be taken with this action -->
+        <li style="padding-top: 15%">
+            <input class="type" type="radio" name="type" value="设计"/>
+            <input type="button" name="design" class="btn btn-danger" value="设计" onclick="chooseType(this)">
+        </li>
+
+
+    </ul>
+
+
+    <input type="text" name="imagename" class="input2" placeholder="请输入图片名称" autocomplete="off"/>
+
+    <div style="margin: 160px 0px 0px 0px;">
+        <textarea id="bbb" name="introduce" class="input2" rows="3" maxlength="40" placeholder="图片描述:"></textarea>
+        <span id="aaa">0/40</span></br>
+    </div>
+
+    <input type="submit" class="confirm" value="提交" />
+</form>
+</div>
+
+<script type="text/javascript" src="/static/select-box/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/select-box/js/dateTime.min.js"></script>
+
+<script type="text/javascript">
+
+    function chooseType(btn) {
+        $(btn).siblings().prop("checked",true);
+    }
+
+    $(function () {
+        $("#bbb").keyup(function () {
+            let textLength = $("#bbb").val().length;
+
+            $("#aaa").html(textLength+"/40");
+        });
+    });
+
+    $("#date").datetime({
+        type:"date",
+        value:[2019,9,30],
+        success:function(res){
+            console.log(res)
+        }
+    })
+
+</script>
+</body>
+</html>

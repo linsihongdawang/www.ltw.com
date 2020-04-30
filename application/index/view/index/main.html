@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Grid Loading and Hover Effect: Recreating Samsung's grid loading effect" />
+		<meta name="keywords" content="grid loading, swipe, effect, slide, masonry, web design, tutorial" />
+		<link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap-theme.css">
+		<link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap-theme.min.css">
+		<link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap.css">
+		<link type="text/css" rel="stylesheet" href="/static/user-css/css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="/static/user-css/css/ThinkPHP登录页.css">
+		<script type="text/javascript" src="/static/user-css/js/npm.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="/static/LWT-main-css/js/jquery.min.js"></script>
+        <script type="text/javascript" src="/static/LWT-main-css/js/modernizr.js"></script>
+        <script type="text/javascript" src="/static/LWT-main-css/js/pubu.js"></script>
+		<link rel="stylesheet" type="text/css" href="/static/LWT-main-css/css/pubu.css" />
+		<title>LTW-mian</title>
+	</head>
+	<body>
+  <div id="toptage">
+  <div class="row" style="margin-top: 2%;">
+  <div class="col-md-3"><img src="/static/user-css/img/GOGlogo.png" style="width: 100%;height: 100%;margin-top: -50%;"></div>
+  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
+  <div class="col-md-1"></div>
+	  <div class="col-md-1"><h3 class="h4"><a href="{:url('paginate/tomain')}">旅图首页</a></h3></div>
+      <div class="col-md-1"><h3 class="h4"><a href="">问题反馈</a></h3></div>
+      <div class="col-md-1"><h3 class="h4"><a href="">加入社群</a></h3></div>
+	  <div class="col-md-1"><h3 class="h4"><a href="{:url('Fileupload/tofileupload')}">上传图片</a></h3></div>
+      <div class="col-md-1"><h3 class="h4"><a href="{:url('index/offline')}">退出账号</a></h3></div>
+  </div>
+  </div>
+  <div id="row">
+  	<div class="col-lg-12 col-md-12" style="padding-left: 0px;padding-right: 0px;">
+		<div id="main-bg1">
+			<div id="searchbox">
+				<input type="text" name="search" class="form-control" placeholder="查找图片">
+				<img src="/static/LWT-main-css/img/searching.png">
+			</div>
+		</div>
+  	</div>
+  </div>
+
+  <div class="container">
+	<section class="grid-wrap">
+		<ul class="grid swipe-down" id="grid">
+			{volist name="list" id="vo"}
+			<li><a href="#"><img src="{$vo.imageSrc}" alt="{$vo.imageId}" height="300px" >
+				<h3>{$vo.imageName}</h3>
+			</a></li>
+			{/volist}
+		</ul>
+	</section>
+</div>
+
+
+<div class="t_show">
+    <div class="t_img"></div>
+</div>
+
+<div class="t_images"></div>
+</body>
+
+</html>

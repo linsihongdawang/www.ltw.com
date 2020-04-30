@@ -1,0 +1,799 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" href="/static/assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Amaze - Bootstrap Admin Dashboard Template</title>
+	<meta name="viewport" content="width=device-width">
+
+	<!-- Bootstrap core CSS     -->
+	<link href="/static/assets/css/bootstrap.min.css" rel="stylesheet">
+
+	<!--  Material Dashboard CSS    -->
+	<link href="/static/assets/css/amaze.css" rel="stylesheet">
+
+	<!--  CSS for Demo Purpose, don't include it in your project     -->
+	<link href="/static/assets/css/demo.css" rel="stylesheet">
+
+	<!--     Fonts and icons     -->
+	<link href="/static/assets/css/font-awesome.min.css" rel="stylesheet">
+	<link href="/static/assets/css/font-muli.css" rel="stylesheet" type="text/css">
+	<link href="/static/assets/css/themify-icons.css" rel="stylesheet">
+
+	<link href="/static/assets/vendors/sweetalert/css/sweetalert2.min.css" rel="Stylesheet">
+
+
+</head>
+
+<body>
+
+		<div class="wrapper" style="position: absolute;">
+			<div class="sidebar" data-background-color="brown" data-active-color="danger">
+				<div class="logo">
+					<a href="#" class="simple-text">
+						神奇的管理员
+					</a>
+				</div>
+				<div class="logo logo-mini">
+					<a href="#" class="simple-text">
+						A
+					</a>
+				</div>
+				<div class="sidebar-wrapper">
+					<ul class="nav">
+						<li class="active">
+							<a href="{:url('Index/toindex')}">
+								<i class="ti-panel"></i>
+								<p>仪表板</p>
+							</a>
+						</li>
+						<li>
+							<a href="{:url('widgets/towidgets')}">
+								<i class="ti-widget"></i>
+								<p>小工具</p>
+							</a>
+						</li>
+						<li>
+							<a data-toggle="collapse" href="#charts" class="collapsed" aria-expanded="false">
+								<i class="ti-bar-chart-alt"></i>
+								<p>
+									<b class="caret"></b>
+									统计图
+								</p>
+							</a>
+							<div class="collapse" id="charts" role="navigation" aria-expanded="false" style="height: 0px;">
+								<ul class="nav">
+									<li>
+										<a href="{:url('Charts/tochart')}">综合图表（1）</a>
+									</li>
+									<li>
+										<a href="{:url('Charts/toflot')}">综合图表（2）</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a data-toggle="collapse" href="#ui-elements" class="collapsed" aria-expanded="false">
+								<i class="ti-package"></i>
+								<p>用户界面元素
+									<b class="caret"></b>
+								</p>
+							</a>
+							<div class="collapse" id="ui-elements" role="navigation" aria-expanded="false" style="height: 0px;">
+								<ul class="nav">
+									<li><a href="{:url('Ui/toaccordions')}">折叠面板</a></li>
+									<li><a href="{:url('Ui/tobuttons')}">按钮控件</a></li>
+									<li><a href="{:url('Ui/toicons')}">图标控件</a></li>
+									<li><a href="{:url('Ui/tonotifications')}">通知管理</a></li>
+									<li><a href="{:url('Ui/totypography')}">字体排版</a></li>
+
+								</ul>
+							</div>
+						</li>
+		
+						<li>
+							<a data-toggle="collapse" href="#tables" class="collapsed" aria-expanded="false">
+								<i class="ti-view-list-alt"></i>
+								<p>数据统计表
+									<b class="caret"></b>
+								</p>
+							</a>
+							<div class="collapse" id="tables" role="navigation" aria-expanded="false" style="height: 0px;">
+								<ul class="nav">
+									<li><a href="{:url('Tables/totables')}">收益表格</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a data-toggle="collapse" href="#pages" class="collapsed" aria-expanded="false">
+								<i class="ti-gift"></i>
+								<p>页面信息管理
+									<b class="caret"></b>
+								</p>
+							</a>
+							<div class="collapse" id="pages" role="navigation" aria-expanded="false" style="height: 0px;">
+								<ul class="nav">
+			
+									<li><a href="{:url('SamplePages/totimeline')}">时间线</a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="{:url('Calendar/tocalendar')}">
+								<i class="ti-calendar"></i>
+								<p>日历
+									<b class="caret"></b>
+								</p>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+    
+
+	<div class="main-panel">
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-minimize">
+					<button id="minimizeSidebar" class="btn btn-round btn-white btn-fill btn-just-icon">
+						<i class="ti-arrow-left"></i>
+					</button>
+				</div>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse">
+						<span class="sr-only">切换导航</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">仪表板</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="ti-bell"></i>
+								<span class="notification">6</span>
+								<p class="hidden-lg hidden-md">
+									通知
+									<b class="caret"></b>
+								</p>
+							</a>
+							<ul class="dropdown-menu">
+
+								<li>
+									<a href="#">你有5条通知</a>
+								</li>
+								<li>
+									<a href="#">来自你的朋友麦克的通知</a>
+								</li>
+								<li>
+									<a href="#">祝Marry生日快乐</a>
+								</li>
+								<li>
+									<a href="#">参加生日聚会</a>
+								</li>
+								<li>
+									<a href="#">关于管理员的通知</a>
+								</li>
+								<li>
+									<a href="#">准备关于“过期”的销售报告</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="ti-layout-grid3-alt"></i>
+								<p class="hidden-lg hidden-md">Apps</p>
+							</a>
+						</li>
+						<li>
+							<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="ti-user"></i>
+								<p class="hidden-lg hidden-md">Profile</p>
+							</a>
+						</li>
+						<li>
+							<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+								<i class="ti-settings"></i>
+								<p class="hidden-lg hidden-md">Settings</p>
+							</a>
+						</li>
+						<li class="separator hidden-lg hidden-md"></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="content">
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="card">
+							<div class="content">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="icon-big icon-warning text-center">
+											<i class="ti-stats-up"></i>
+										</div>
+									</div>
+									<div class="col-xs-7">
+										<div class="numbers">
+											<p>访问者</p>
+											70,340
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<i class="ti-alert text-warning"></i> 最后一个月低于65 %
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="card">
+							<div class="content">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="icon-big icon-danger text-center">
+											<i class="ti-receipt"></i>
+										</div>
+									</div>
+									<div class="col-xs-7">
+										<div class="numbers">
+											<p>订单</p>
+											102
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<i class="ti-tag text-warning"></i> 产品销售
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="card">
+							<div class="content">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="icon-big icon-success text-center">
+											<i class="ti-money"></i>
+										</div>
+									</div>
+									<div class="col-xs-7">
+										<div class="numbers">
+											<p>本月收入</p>
+											$23,100
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<i class="ti-calendar"></i> 周销售额
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-6 col-sm-6">
+						<div class="card">
+							<div class="content">
+								<div class="row">
+									<div class="col-xs-5">
+										<div class="icon-big icon-info text-center">
+											<i class="ti-twitter"></i>
+										</div>
+									</div>
+									<div class="col-xs-7">
+										<div class="numbers">
+											<p>粉丝</p>
+											+245
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<div class="stats">
+									<i class="ti-reload"></i> 即时更新
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card" style="min-height: 350px">
+							<div class="header card-header-icon">
+
+								<h4 class="title"><i class="ti-pulse"></i> 销售趋势
+								</h4>
+							</div>
+							<div class="content">
+								<div class="chart-edge">
+									<div id="line-chart" class="demo-placeholder"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="card card-circle-chart" data-background="color" data-color="orange" style="min-height: 350px">
+							<div class="header text-center">
+								<h5 class="title">用户满意度</h5>
+								<p class="description">最后30天</p>
+							</div>
+							<div class="content">
+								<div id="chartNewVisitors" class="chart-circle" data-percent="95">95%</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-3 col-sm-6">
+						<div class="card card-circle-chart" data-background="color" data-color="brown" style="min-height: 350px">
+							<div class="header text-center">
+								<h5 class="title">转换率</h5>
+								<p class="description">最后30天</p>
+							</div>
+							<div class="content">
+								<div id="chartSubscriptions" class="chart-circle" data-percent="9">9%</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-12">
+						<div class="card" style="min-height: 485px">
+							<div class="header card-header-text">
+								<h4 class="title">管理员统计</h4>
+								<p class="category">2016年12月15日新员工</p>
+							</div>
+							<div class="content table-responsive">
+								<table class="table table-hover">
+									<thead class="text-primary">
+										<tr>
+											<th>ID</th>
+											<th>名字</th>
+											<th>薪水</th>
+											<th>国籍</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>Bob Williams</td>
+											<td>$23,566</td>
+											<td>美国</td>
+										</tr>
+										<tr>
+											<td>2</td>
+											<td>Mike Tyson</td>
+											<td>$10,200</td>
+											<td>加拿大</td>
+										</tr>
+										<tr>
+											<td>3</td>
+											<td>Tim Cook</td>
+											<td>$32,190</td>
+											<td>荷兰</td>
+										</tr>
+										<tr>
+											<td>4</td>
+											<td>Philip Morris</td>
+											<td>$31,123</td>
+											<td>英国</td>
+										</tr>
+										<tr>
+											<td>5</td>
+											<td>Tom Hooper</td>
+											<td>$23,789</td>
+											<td>印度</td>
+										</tr>
+										<tr>
+											<td>6</td>
+											<td>Hulk Hogan</td>
+											<td>$43,120</td>
+											<td>荷兰</td>
+										</tr>
+										<tr>
+											<td>7</td>
+											<td>Angelina Jolie </td>
+											<td>$12,140</td>
+											<td>澳大利亚</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div class="card" style="min-height: 485px">
+							<div class="header">
+								<h4 class="title">任务列表</h4>
+							</div>
+							<div class="content">
+								<div class="table-full-width table-tasks">
+									<div id="task-actions" class="dropdown pull-right">
+										<button type="button" class="btn btn-round btn-info dropdown-toggle" data-toggle="dropdown">
+											<i class="ti-more"></i>
+											<span class="caret"></span>
+										</button>
+										<ul class="dropdown-menu dropdown-menu-right" role="menu">
+											<li>
+												<a href="#action">动作</a>
+											</li>
+											<li>
+												<a href="#action">其他操作</a>
+											</li>
+											<li>
+												<a href="#here">其他任务</a>
+											</li>
+											<li class="divider"></li>
+											<li>
+												<a href="#link">链接分离</a>
+											</li>
+										</ul>
+									</div>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td>
+													<label class="checkbox">
+														<input type="checkbox" value="" data-toggle="checkbox">
+													</label>
+												</td>
+												<td>制定年度培训计划</td>
+												<td class="td-actions text-right">
+													<div class="table-icons">
+														<button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+															<i class="ti-pencil-alt"></i>
+														</button>
+														<button type="button" id="btn1" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+															<i class="ti-close"></i>
+														</button>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<label class="checkbox">
+														<input type="checkbox" value="" data-toggle="checkbox" checked="">
+													</label>
+												</td>
+												<td>创建入职培训教程</td>
+												<td class="td-actions text-right">
+													<div class="table-icons">
+														<button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+															<i class="ti-pencil-alt"></i>
+														</button>
+														<button type="button" id="btn2" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+															<i class="ti-close"></i>
+														</button>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<label class="checkbox">
+														<input type="checkbox" value="" data-toggle="checkbox">
+													</label>
+												</td>
+												<td>完成管理员的面试与培训</td>
+
+												<td class="td-actions text-right">
+													<div class="table-icons">
+														<button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+															<i class="ti-pencil-alt"></i>
+														</button>
+														<button type="button" id="btn3" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+															<i class="ti-close"></i>
+														</button>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<label class="checkbox">
+														<input type="checkbox" value="" data-toggle="checkbox">
+													</label>
+												</td>
+												<td>招募五名开发人员，让他们接受新项目的培训</td>
+												<td class="td-actions text-right">
+													<div class="table-icons">
+														<button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-xs">
+															<i class="ti-pencil-alt"></i>
+														</button>
+														<button type="button" id="btn4" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-xs">
+															<i class="ti-close"></i>
+														</button>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-12">
+						<div class="card" style="min-height: 485px">
+							<div class="header">
+								<h4 class="title">活动清单</h4>
+							</div>
+							<div class="content">
+								<div class="streamline">
+									<div class="sl-item sl-primary">
+										<div class="sl-content">
+											<small class="text-muted">5分钟前</small>
+											<p>威廉姆斯刚刚加入了管理项目</p>
+										</div>
+									</div>
+									<div class="sl-item sl-danger">
+										<div class="sl-content">
+											<small class="text-muted">25分钟前</small>
+											<p>简已发送访问项目文件夹的请求</p>
+										</div>
+									</div>
+									<div class="sl-item sl-success">
+										<div class="sl-content">
+											<small class="text-muted">40分钟前</small>
+											<p>凯特把你加入了她的团队</p>
+										</div>
+									</div>
+									<div class="sl-item">
+										<div class="sl-content">
+											<small class="text-muted">45分钟前</small>
+											<p>约翰完成了他的任务</p>
+										</div>
+									</div>
+									<div class="sl-item sl-warning">
+										<div class="sl-content">
+											<small class="text-muted">55分钟前</small>
+											<p>吉姆和你共享了一个文件夹</p>
+										</div>
+									</div>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card">
+							<div class="header card-header-icon">
+								<h4 class="title"><i class="ti-world"></i>全球旅游图片上传分布</h4>
+							</div>
+							<div class="content">
+								<div class="row">
+									<div class="col-md-5">
+										<div class="table-responsive table-sales">
+											<table class="table">
+												<tbody>
+													<tr>
+														<td>
+															<div class="flag">
+																<img src="/static/assets/img/flags/US.png" alt="">
+															</div>
+														</td>
+														<td>美国</td>
+														<td class="text-right">
+															2.920
+														</td>
+														<td class="text-right">
+															53.23%
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="flag">
+																<img src="/static/assets/img/flags/DE.png" alt="">
+															</div>
+														</td>
+														<td>德国</td>
+														<td class="text-right">
+															1.300
+														</td>
+														<td class="text-right">
+															20.43%
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="flag">
+																<img src="/static/assets/img/flags/AU.png" alt="">
+															</div>
+														</td>
+														<td>澳大利亚</td>
+														<td class="text-right">
+															760
+														</td>
+														<td class="text-right">
+															10.35%
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="flag">
+																<img src="/static/assets/img/flags/GB.png" alt="">
+															</div>
+														</td>
+														<td>英国</td>
+														<td class="text-right">
+															690
+														</td>
+														<td class="text-right">
+															7.87%
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="flag">
+																<img src="/static/assets/img/flags/RO.png" alt="">
+															</div>
+														</td>
+														<td>罗马尼亚</td>
+														<td class="text-right">
+															600
+														</td>
+														<td class="text-right">
+															5.94%
+														</td>
+													</tr>
+													<tr>
+														<td>
+															<div class="flag">
+																<img src="/static/assets/img/flags/BR.png" alt="">
+															</div>
+														</td>
+														<td>巴西</td>
+														<td class="text-right">
+															550
+														</td>
+														<td class="text-right">
+															4.34%
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="col-md-6 col-md-offset-1">
+										<div id="worldMap" class="map"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="footer">
+			<div class="container-fluid">
+				<nav class="pull-left">
+					<ul>
+						<li>
+							<a href="#">
+								主页
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								公司
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								文件夹
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								博客
+							</a>
+						</li>
+					</ul>
+				</nav>
+				<p class="copyright pull-right">
+					&copy;
+					<script>
+						document.write(new Date().getFullYear())
+					</script>
+					<a href="http://www.17sucai.com/">神奇的管理员</a>
+				</p>
+			</div>
+		</footer>
+	</div>
+
+	<!--   Core JS Files   -->
+
+	<script src="/static/assets/vendors/jquery-3.1.1.min.js" type="text/javascript"></script>
+	<script src="/static/assets/vendors/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="/static/assets/vendors/bootstrap.min.js" type="text/javascript"></script>
+	<script src="/static/assets/vendors/material.min.js" type="text/javascript"></script>
+	<script src="/static/assets/vendors/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+	<!-- Forms Validations Plugin -->
+	<script src="/static/assets/vendors/jquery.validate.min.js"></script>
+	<!--  Plugin for Date Time Picker and Full Calendar Plugin-->
+	<script src="/static/assets/vendors/moment.min.js"></script>
+	<!--  Charts Plugin -->
+	<script src="/static/assets/vendors/charts/flot/jquery.flot.js"></script>
+	<script src="/static/assets/vendors/charts/flot/jquery.flot.resize.js"></script>
+	<script src="/static/assets/vendors/charts/flot/jquery.flot.pie.js"></script>
+	<script src="/static/assets/vendors/charts/flot/jquery.flot.stack.js"></script>
+	<script src="/static/assets/vendors/charts/flot/jquery.flot.categories.js"></script>
+	<script src="/static/assets/vendors/charts/chartjs/Chart.min.js" type="text/javascript"></script>
+
+	<!--  Plugin for the Wizard -->
+	<script src="/static/assets/vendors/jquery.bootstrap-wizard.js"></script>
+	<!--  Notifications Plugin    -->
+	<script src="/static/assets/vendors/bootstrap-notify.js"></script>
+	<!-- DateTimePicker Plugin -->
+	<script src="/static/assets/vendors/bootstrap-datetimepicker.js"></script>
+	<!-- Vector Map plugin -->
+	<script src="/static/assets/vendors/jquery-jvectormap.js"></script>
+	<!-- Sliders Plugin -->
+	<script src="/static/assets/vendors/nouislider.min.js"></script>
+	<!--  Google Maps Plugin    -->
+	<script src="http://ditu.google.cn/maps/api/js?key=AIzaSyAurmSUEQDwY86-wOG3kCp855tCI8lHL-I"></script>
+	<!-- Select Plugin -->
+	<script src="/static/assets/vendors/jquery.select-bootstrap.js"></script>
+
+	<!--  Checkbox, Radio, Switch and Tags Input Plugins -->
+	<script src="/static/assets/js/bootstrap-checkbox-radio-switch-tags.js"></script>
+
+	<!-- Circle Percentage-chart -->
+	<script src="/static/assets/js/jquery.easypiechart.min.js"></script>
+
+	<!--  DataTables.net Plugin    -->
+	<script src="/static/assets/vendors/jquery.datatables.js"></script>
+	<!-- Sweet Alert 2 plugin -->
+	<script src="/static/assets/vendors/sweetalert/js/sweetalert2.min.js"></script>
+	<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput -->
+	<script src="/static/assets/vendors/jasny-bootstrap.min.js"></script>
+	<!--  Full Calendar Plugin    -->
+	<script src="/static/assets/vendors/fullcalendar.min.js"></script>
+	<!-- TagsInput Plugin -->
+	<script src="/static/assets/vendors/jquery.tagsinput.js"></script>
+	<!-- Material Dashboard javascript methods -->
+	<script src="/static/assets/js/amaze.js"></script>
+	<!-- Material Dashboard DEMO methods, don't include it in your project! -->
+	<script src="/static/assets/js/demo.js"></script>
+
+	<script src="/static/assets/js/charts/flot-charts.js"></script>
+	<script src="/static/assets/js/charts/chartjs-charts.js"></script>
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			demo.initVectorMap();
+			demo.initCirclePercentage();
+
+		});
+
+        $("#btn1").click(function () {
+            $("#btn1").parent().parent().parent().remove();
+        });
+
+        $('#btn2').click(function () {
+            $('#btn2').parent().parent().parent().remove();
+        });
+
+        $('#btn3').click(function () {
+            $('#btn3').parent().parent().parent().remove();
+        });
+
+        $('#btn4').click(function () {
+            $('#btn4').parent().parent().parent().remove();
+        });
+	</script>
+</body>
+</html>
